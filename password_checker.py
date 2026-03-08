@@ -1,12 +1,13 @@
 import re
 
-BLACK   = "\033[30m"
-RED     = "\033[31m"
-GREEN   = "\033[32m"
-YELLOW  = "\033[33m"
-BLUE    = "\033[34m"
-MAGENTA = "\033[35m"
-RESET   = "\033[0m"
+BG_WHITE   = "\033[47m"
+BLACK      = "\033[30m"
+RED        = "\033[31m"
+GREEN      = "\033[32m"
+YELLOW     = "\033[33m"
+BLUE       = "\033[34m"
+MAGENTA    = "\033[35m"
+RESET      = "\033[0m"
 
 def strengthbar(score):
     colors = [RED, YELLOW, BLUE, GREEN]
@@ -14,7 +15,7 @@ def strengthbar(score):
 
     for i in range(4):
         if i < score:
-            bar += colors[i] + "#" + RESET
+            bar += colors[i] + "~" + RESET
         else:
             bar += "-"
     bar += "]"
@@ -40,18 +41,18 @@ def main():
         if not re.search(r'[@$!%*?&]', password):
             score -= 1
 
+        strengthbar(score)
+
         if score == 4:
             print(GREEN + "You've returned a very strong password! Good job!" + RESET)
         elif score == 3:
-            print(BLUE + "You've returned a strong password, but there's a way to still be even safer " + RESET)
+            print(BLUE + "You've returned a strong password, but there's a way to still be even safer! " + RESET)
         elif score == 2:
             print(YELLOW + "You've returned a moderate password. Fix up those vulnerabilities and you're good to go." + RESET)
         elif score == 1:
             print(BLACK + "You've returned a weak password. Come on, you can do better than that!" + RESET)
         else:
             print(RED + "You've returned a very weak password... Are you looking to get hacked?" + RESET)
-
-        strengthbar(score)
 
         if (score != 4):
             print(RED + "Fix this: " + RESET, end = "")
@@ -65,6 +66,8 @@ def main():
         elif not re.search(r'[@$!%*?&]', password):
             print(RED + "Your password should contain at least one special character (@,$,!,%,*,?,&)" + RESET)
             score -= 1
+        
+        print()
         
 
 
