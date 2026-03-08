@@ -17,3 +17,4 @@ A simple Python program that evaluates the password strength of user inputs and 
 4. Actionable tips for improvement
 
 ## Demo
+![Demo](https://github.com/jdin7116/Password-Checker/blob/a1270a86c23b20af2165d12f3f946676fde83aca/images/demo.png)
